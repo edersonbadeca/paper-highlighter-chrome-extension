@@ -11,7 +11,6 @@ function clearAllHighlights() {
     });
   });
 
-  // Limpar também do storage
   chrome.storage.local.set({ highlights: [] }, function () {
     loadHighlights();
   });
@@ -34,8 +33,35 @@ function loadHighlights() {
     highlightsList.innerHTML = ''; // Limpar lista antes de adicionar
     result.highlights.forEach(function (highlight) {
       let div = document.createElement('div');
-      div.textContent = highlight;
+      div.style.marginBottom = '10px';
+
+      let urlDiv = document.createElement('div');
+      urlDiv.textContent = `URL: ${highlight.url}`;
+      urlDiv.style.fontSize = '10px';
+      urlDiv.style.color = 'gray';
+      div.appendChild(urlDiv);
+
+      let textDiv = document.createElement('div');
+      textDiv.textContent = highlight.text;
+      div.appendChild(textDiv);
+
+      let copyButton = document.createElement('button');
+      copyButton.textContent = 'Copy to Clipboard';
+      copyButton.style.marginTop = '5px';
+      copyButton.addEventListener('click', function () {
+        copyToClipboard(highlight.text);
+      });
+      div.appendChild(copyButton);
+
       highlightsList.appendChild(div);
     });
+  });
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(function () {
+    alert('Text copied to clipboard');
+  }, function (err) {
+    console.error('Failed to copy text: ', err);
   });
 }
