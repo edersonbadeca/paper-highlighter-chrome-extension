@@ -16,5 +16,14 @@
       "css": ["styles.css"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "commands": {
+    "highlight-text": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+I",
+        "mac": "Command+I"
+      },
+      "description": "Highlight selected text"
+    }
+  }
 }
