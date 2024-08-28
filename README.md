@@ -16,9 +16,9 @@ The **Page Highlighter Extension** is a Chrome extension designed to allow users
 ## Installation
 
 1. **Clone the Repository**:
-    \`\`\`bash
+    ```bash
     git clone https://github.com/yourusername/page-highlighter-extension.git
-    \`\`\`
+    ```
 2. **Open Chrome Extensions**:
     - Go to `chrome://extensions/` in your Chrome browser.
     - Enable "Developer mode" in the top right corner.
